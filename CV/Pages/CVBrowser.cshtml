@@ -1,0 +1,42 @@
+﻿@page 
+@model CV.Pages.CVBrowserModel
+@{
+}
+
+<div style="padding-bottom: 50px; padding-top:50px;">
+	<h1>Our CV Browser !</h1>
+	<h3>You can find all submitted CVs in this archive table...</h3>
+</div>
+
+<table class="table table-dark table-hover" >
+    <thead>
+    <tr class="text-center">
+		<th>Firstname</th>
+		<th>Lastname</th>
+		<th>Gender</th>
+		<th>Email</th>
+		<th>Grade</th>
+		<th colspan="3">Additional</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.all)
+		{
+			<tr class="table-light">
+				<td>@item.FirstName</td>
+				<td>@item.LastName</td>
+				<td>@item.Gender</td>
+				<td>@item.Email</td>
+				<td>@item.Grade</td>
+				<td><a class="btn btn-link"   asp-page="Details" asp-route-id="@item.Id">Details</a></td>
+				<td><a class="btn btn-link" asp-page="UpdateCV" asp-route-id="@item.Id">Update</a></td>
+				<td>
+					<form asp-page="CVBrowser" method="post">
+							  <input asp-for="id" value="@item.Id"/>
+							  <button class="btn btn-link" type="submit">Delete</button>		  
+					</form>
+				</td>
+			</tr>
+		}
+    </tbody>
+</table>	

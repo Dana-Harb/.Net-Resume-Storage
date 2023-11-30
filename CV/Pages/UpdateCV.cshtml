@@ -1,0 +1,89 @@
+﻿@page "{Id}"
+@model CV.Pages.UpdateCVModel
+@{
+}
+
+	<div style="padding-bottom:50px; padding-top:50px;">
+		<h1>Updating Your CV...</h1>
+		<h4>Refill the form with your new information to update existing CV</h4>
+	</div>
+	<form method="post" enctype="multipart/form-data" class="container">
+
+		<div class="form-group">
+			<label asp-for="CVupdate.FirstName" class="form-label mt-4">First Name</label>
+			<input value="@Model.update.FirstName" asp-for="CVupdate.FirstName" class="form-control" />
+		</div>
+
+		<div class="form-group">
+			<label asp-for="CVupdate.LastName" class="form-label mt-4">Last Name</label>
+			<input value="@Model.update.LastName" asp-for="CVupdate.LastName" class="form-control" />
+		</div>
+
+		<div class="form-group has-success has-danger">
+			<label asp-for="CVupdate.Email" class="form-label mt-4">Email</label>
+			<input value="@Model.update.Email" asp-for="CVupdate.Email" class="form-control" />
+		</div>
+
+		<div class="form-group">
+			<label asp-for="CVupdate.DoB" class="form-label mt-4">Date of Birth</label>
+			<input value="@Model.update.Date" asp-for="CVupdate.DoB" class="form-control" />
+		</div>
+
+
+		<div class="form-group">
+			<label class="form-label mt-4">Gender</label>
+			<div class="form-check">
+				<input  class="form-check-input" type="radio" asp-for="CVupdate.Gender" checked="@Model.male" value="male"/>
+				<label class="form-check-label"> male</label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" type="radio"  asp-for="CVupdate.Gender" checked="@Model.female" value="female"/>
+				<label class="form-check-label">female</label>
+			</div>
+		</div>
+
+
+		<div class="form-group">
+			<label class="form-label mt-4" asp-for="CVupdate.Nationality">Nationality</label>
+			<select class="form-select" asp-for="CVupdate.Nationality" asp-items="Model.Items"></select>
+		</div>
+
+
+
+
+
+		<div class="form-group" style="padding-bottom:20px; padding-top:20px;">
+			<label>Programming Skills</label>
+			<div class="form-check">
+				<input class="form-check-input" asp-for="CVupdate.Java" type="checkbox" checked = "@Model.update.Java">
+				<label class="form-check-label" asp-for="CVupdate.Java"></label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" asp-for="CVupdate.Javascript" type="checkbox" checked="@Model.update.Javascript">
+				<label class="form-check-label" asp-for="CVupdate.Javascript"></label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" asp-for="CVupdate.C" type="checkbox" checked="@Model.update.C">
+				<label class="form-check-label" asp-for="CVupdate.C"></label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" asp-for="CVupdate.Python" type="checkbox" checked="@Model.update.Python">
+				<label class="form-check-label" asp-for="CVupdate.Python"></label>
+			</div>
+		</div>
+
+
+		<div class="form-group">
+		<input class="form-control" asp-for="CVupdate.Image" />
+		</div>
+		
+		<div style="display:flex; justify-content:center;">
+			<button class=" btn btn-primary" style="margin-top:30px; margin-bottom:30px;" type="submit">Update CV</button>
+		</div>
+
+		<div asp-validation-summary="All">
+
+		</div>
+
+	</form>
+

@@ -1,0 +1,47 @@
+﻿@page "{Id}"
+@model CV.Pages.DetailsModel
+@{
+}
+<div style="text-align:center; padding-top: 40px; padding-bottom: 40px;">
+	<h1 >Welcome @Model.CVDetail.FirstName to your CV review </h1>
+</div>
+
+<div class="container" style="text-align:center;">
+	  <div>
+        <img class="profile-pic" src="\@Model.CVDetail.Image" alt="My-Profile" width="200" height="200">
+        <h2>Hello.</h2>
+		<h6 class="text-muted">Email address : @Model.CVDetail.Email</h6>
+        <p class="bio">This is @Model.CVDetail.FirstName @Model.CVDetail.LastName, born on @Model.CVDetail.DoB , @Model.CVDetail.Nationality.Country. <span class="text-muted">Gender: @Model.CVDetail.Gender</span></p>
+      </div>
+</div>
+
+<div style="display:block">
+    <div class="card border-dark mb-3 mx-auto" style="max-width: 20rem;">
+      <div class="card-header">@Model.CVDetail.FirstName scored @Model.CVDetail.Grade pts!</div>
+      <div class="card-body">
+        <h4 class="card-title">Programming Skills : </h4>
+        <ul>
+                @if (@Model.CVDetail.Java == true)
+                {
+                    <li>Java</li>
+                }
+                @if (@Model.CVDetail.Javascript == true)
+                {
+                    <li>Javascript</li>
+                }
+                @if (@Model.CVDetail.C == true)
+                {
+                    <li>C</li>
+                }
+                @if (@Model.CVDetail.Python == true)
+                {
+                    <li>Python</li>
+                }
+        </ul>
+      </div>
+    </div>
+</div>
+<div style="text-align:center;">
+    <a class="btn btn-lg btn-dark" style="margin-bottom:50px; margin-top:30px; margin-right:10px;" asp-area="" asp-page="Index">Satisfied!</a>
+    <a class="btn btn-lg btn-dark" style="margin-bottom:50px; margin-top:30px; margin-left:10px;" asp-area="" asp-route-id="@Model.id" asp-page="/UpdateCV">There is a mistake!</a>
+</div>
